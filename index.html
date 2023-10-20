@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Basic Calculator</title>
+    <style>
+        .calculator {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
+            max-width: 400px;
+            margin: 0 auto;
+            text-align: center;
+            padding-left: 40px;
+        }
+        .formstyle{
+            width:800px;
+            height:650px;
+            text-align: center;
+            margin-top: 30px;
+            margin-left: 500px;
+            border: 2px solid black;
+            border-radius: 20px;
+            background-color: black;
+            box-shadow: 0 0 5rem black;
+            
+            
+        }
+        #display{
+            width: 300px;
+           height:50px;
+           border: 3px solid black;
+	       border-radius: 12px;
+	       padding: 20px;
+           background-color: lightsteelblue;
+           font-size:xx-large;
+           margin-top: 20px;
+
+        }
+        .calculator input {
+            grid-column: span 4;
+            text-align: right;
+            padding: 10px;
+            font-size: 24px;
+        }
+        .calculator button {
+            font-size: 20px;
+            padding: 10px;
+        }
+        .equal{
+            
+            background-color:green;
+            height:80px;
+            width:150px;
+            border-radius: 50px;
+        }
+        .oper{
+            color: coral;
+            background-color:lightgray;
+            align-items: center;
+            font-size: xx-large;
+            margin-left: -70px;
+            box-shadow: 0 0 1rem black;
+        
+        }
+        .oper1{
+            color: coral;
+            background-color:lightgray;
+            align-items: center;
+            font-size: xx-large;
+            box-shadow: 0 0 1rem black;
+        
+        }
+        button{
+            background-color:gray;
+            border:none;
+            border-radius: 50%;
+            width:80px;
+            height:80px;
+            color: white;
+            font-size: x-large;
+            box-shadow: 0 0 1rem black;
+        }
+        .ac{
+            color:black;
+            border-radius: 50%;
+            width:80px;
+            height:80px;
+            border: none;
+            background-color: lightgray;
+            font-weight: bold ;
+            font-size: x-large;
+            box-shadow: 0 0 1rem black;
+        }
+    </style>
+</head>
+<body>
+    <div class="calculator formstyle">
+        <input id="display" type="text" readonly>
+        <button class="ac" onclick="clearDisplay()">AC</button>
+        <button onclick="backspace()">&#9003;</button>
+        <button class="oper1" onclick="appendToDisplay('%')">%</button>
+        <button class="oper" onclick="appendToDisplay('/')">/</button>
+        <button onclick="appendToDisplay('7')">7</button>
+        <button onclick="appendToDisplay('8')">8</button>
+        <button onclick="appendToDisplay('9')">9</button>
+        <button class="oper" onclick="appendToDisplay('+')">+</button>
+        <button onclick="appendToDisplay('4')">4</button>
+        <button onclick="appendToDisplay('5')">5</button>
+        <button onclick="appendToDisplay('6')">6</button>
+        <button  class="oper" onclick="appendToDisplay('-')">-</button>
+        <button onclick="appendToDisplay('1')">1</button>
+        <button onclick="appendToDisplay('2')">2</button>
+        <button onclick="appendToDisplay('3')">3</button>
+        <button class="oper" onclick="appendToDisplay('*')">*</button>
+        <button onclick="appendToDisplay('0')">0</button>
+        <button onclick="appendToDisplay('.')">.</button>
+        <button class="equal" onclick="calculateResult()">=</button>
+        
+    </div>
+
+    <script>
+        let displayValue = '';
+
+        function appendToDisplay(value) {
+            displayValue += value;
+            document.getElementById('display').value = displayValue;
+        }
+
+        function clearDisplay() {
+            displayValue = '';
+            document.getElementById('display').value = displayValue;
+        }
+
+        function backspace() {
+            displayValue = displayValue.slice(0, -1);
+            document.getElementById('display').value = displayValue;
+        }
+
+        function calculateResult() {
+            try {
+                displayValue = eval(displayValue);
+                document.getElementById('display').value = displayValue;
+            } catch (error) {
+                document.getElementById('display').value = 'Error';
+            }
+        }
+    </script>
+</body>
+</html>
+
+
+
+
+
+
